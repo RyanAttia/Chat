@@ -1,0 +1,25 @@
+.bubble {
+  position: relative;
+  max-width: 65%;
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Sender (user) style */
+.bubble.sender {
+  background-color: rgba(0, 112, 243, 0.9);
+  margin-left: auto;
+  /* You can keep full rounded corners or tweak bottom-right radius */
+  border-radius: 18px;
+}
+
+/* Receiver style */
+.bubble.receiver {
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-right: auto;
+  border-radius: 18px;
+}
