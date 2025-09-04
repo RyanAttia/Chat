@@ -12,7 +12,7 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     if (!user) return;
 
-    const newSocket = io(process.env.REACT_APP_SOCKET_SERVER_URL || "http://localhost:5000", {
+    const newSocket = io(process.env.REACT_APP_SOCKET_URL || "http://localhost:5000", {
       query: { userId: user.id },
       transports: ["websocket"],
     });
