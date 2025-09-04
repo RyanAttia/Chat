@@ -28,7 +28,7 @@ export default function Signup() {
     }
     setLoading(true);
     try {
-      const res = await api.post("/auth/register", form);
+      const res = await api.post("/api/auth/register", form);
       loginUser(res.data.user);
       navigate("/"); 
     } catch (err) {
