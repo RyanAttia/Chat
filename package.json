@@ -4,8 +4,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "server": "nodemon backend/server.js",
     "start": "node backend/server.js",
-    "build": "npm install --prefix frontend && npm run build --prefix frontend && rm -rf backend/frontend && cp -r frontend/build backend/frontend"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +20,14 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.6.2",
     "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "vite": "^6.3.5",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
