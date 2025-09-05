@@ -97,7 +97,7 @@ export default function Home() {
     if (!user) return;
 
       api
-        .get("/conversations")
+        .get("/api/conversations")
         .then((res) => setConversations(res.data))
         .catch(console.error);
   }, [user]);
@@ -106,7 +106,7 @@ export default function Home() {
     if (!activeConv) return;
 
     api
-      .get(`/messages/${activeConv._id}`)
+      .get(`/api/messages/${activeConv._id}`)
       .then((res) => setMessages(res.data))
       .catch(console.error);
   }, [activeConv]);
@@ -127,7 +127,7 @@ export default function Home() {
     };
 
     api
-      .post("/messages", msgData)
+      .post("/api/messages", msgData)
       .then((res) => {
         setMessages((prev) => [...prev, res.data]);
         socketRef.current.emit("sendMessage", {
