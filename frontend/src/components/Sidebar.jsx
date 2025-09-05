@@ -34,7 +34,7 @@ export default function Sidebar({ activeConversationId, selectConversation }) {
     const fetchConversations = async () => {
       setLoading(true);
       try {
-        const res = await api.get("/conversations");
+        const res = await api.get("/api/conversations");
         const sorted = res.data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
         setConversations(sorted);
