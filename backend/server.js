@@ -178,7 +178,8 @@ eventEmitter.on("conversationCreated", (conversation) => {
   });
 });
 
-eventEmitter.on("conversationUpdated", ({ conversationId, message, serverTimestamp }) => {
+eventEmitter.on("conversationUpdated", ({ conversationId, message }) => {
+  const serverTimestamp = Date.now(); // precise server emission time
   io.to(conversationId).emit("newMessage", { message, serverTimestamp });
 });
 
