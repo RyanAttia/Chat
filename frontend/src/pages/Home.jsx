@@ -23,6 +23,15 @@ export default function Home() {
     socketRef.current = io(SOCKET_SERVER_URL, { query: { userId: user.id } });
 
     socketRef.current.on("receiveMessage", (msg) => {
+      const receivedAt = Date.now();
+      const serverTimestamp = msg.serverTimestamp || msg.sentAt; // depending on what backend sends
+      if (serverTimestamp) {
+        const latency = receivedAt - serverTimestamp;
+        console.log(`📩 Message latency: ${latency} ms`);
+      } else {
+        console.warn("⚠️ No server timestamp found on message");
+      }
+      
       if (activeConv && msg.conversationId === activeConv._id) {
         setMessages((prev) => [...prev, msg]);
       }
