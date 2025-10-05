@@ -178,8 +178,8 @@ eventEmitter.on("conversationCreated", (conversation) => {
   });
 });
 
-eventEmitter.on("conversationUpdated", (conversationId) => {
-  emitConversationUpdate(conversationId);
+eventEmitter.on("conversationUpdated", ({ conversationId, message, serverTimestamp }) => {
+  io.to(conversationId).emit("newMessage", { message, serverTimestamp });
 });
 
 // === Connect to DB & Start Server ===
