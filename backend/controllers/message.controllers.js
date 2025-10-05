@@ -21,10 +21,17 @@ export const sendMessage = async (req, res) => {
       $push: { messages: savedMessage._id }, // push the new message id to messages array
       updatedAt: Date.now(),
     });
-    eventEmitter.emit("conversationUpdated", conversationId);
+    // Add this timestamp
+    const serverTimestamp = Date.now();
 
+    // Emit event with timestamp (for latency testing)
+    eventEmitter.emit("conversationUpdated", {
+      conversationId,
+      message: savedMessage,
+      serverTimestamp,
+    });
 
-    res.status(201).json(savedMessage);
+    res.status(201).json({ ...savedMessage.toObject(), serverTimestamp });
   } catch (err) {
     res.status(500).json(err);
   }
